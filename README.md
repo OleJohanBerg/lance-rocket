@@ -1,21 +1,20 @@
 # Lance Rocket
 
-RISC-Vの最新の仕様の実装を見てみたい場合は、[Rocket Chip Generator](https://github.com/freechipsproject/rocket-chip)が良いです。ですが、これだけだと周辺機器のモジュールが全然ないので、FPGA上で動かしても面白みがないです。Rocket Chipに周辺機器のコントロール用のモジュールとBoard Support Package等のSDKを加えたものが、[Freedom](https://github.com/sifive/freedom)です。これは、各種周辺機器のモジュールもついて、ソフトウェアの開発環境まで揃っています。これがあれば十分とも言えるのですが、Freedomは、SoC(System on Chip)のカスタマイズの販売で企業を維持していくようで、FPGA向けのコードは、SoCのコードにラッパー・コードを追加するような形になっています。そのため、FreedomでサポートしているFPGAボード以外に移植しようとすると、結構大変です。
+If you want to see the implementation of the latest specification of RISC-V, [Rocket Chip Generator] (https://github.com/freechipsproject/rocket-chip) is good. However, with this alone, there are no peripheral device modules, so it is not interesting to run it on the FPGA. [Freedom] (https://github.com/sifive/freedom) is a Rocket Chip with a module for controlling peripheral devices and an SDK such as the Board Support Package. It includes modules for various peripherals and even a software development environment. It can be said that this is enough, but Freedom seems to keep the company by selling customized SoC (System on Chip), and the code for FPGA should add wrapper code to the code of SoC. It has a nice shape. Therefore, if you try to port it to an FPGA board other than the one supported by Freedom, it will be quite difficult.
 
-本プロジェクトでは、Rocket Chip GeneratorやFreedomからコードを持ってきて、FPGA向けに簡素な形で実装し、制約ファイルの編集ぐらいで、各種のボードに移植できるような実装を作成します。
+In this project, we will bring code from Rocket Chip Generator and Freedom, implement it in a simple form for FPGA, and create an implementation that can be ported to various boards by editing the constraint file.
 
-以下の4種類のレベルのものを実装する予定です。
+We plan to implement the following four levels.
 
-1. RISC-Vの学習用(TinyLance)  
-32ビット版Rocket Chipを動かしてみて、RISC-Vの勉強をする目的用です。[KOZOS](http://kozos.jp/kozos/)を移植して、組み込みOSの勉強ができるようにします。周辺機器として、スイッチ、LED、UARTを持っています。
-2. 組込み用マイクロ・コントローラ用(BabyLance)  
-IoT(Internet of Things)といった用途向けです。1.の周辺機器に加え、DRAMやSDカード、イーサネット、GPIOを備えます。
-3. パーソナル・コンピュータ用(FryingLance)  
-64ビット版Rocket Chipをベースに、2の周辺機器に加え、VGAアダプタ、キーボードやマウス、USBを加えます。ここで、[はりぼてOS](http://hrb.osask.jp/)のRISC-V版として、「かきわりOS」なるものを作成します。(できれば、Linuxも動かしたい)
-4. ハイ・パフォーマンス・コンピュータ用(ThunderLance)  
-3.のマルチコア版です。(できれば、複数のボードを繋いで、NUMAアーキテクチャを実装したいが…)
+1. RISC-V for learning (TinyLance)
+This is for the purpose of studying RISC-V by moving the 32-bit version of Rocket Chip. Port [KOZOS] (http://kozos.jp/kozos/) so that you can study embedded OS. It has a switch, LED, and UART as peripheral devices.
+2. For embedded microcontrollers (BabyLance)
+It is for applications such as IoT (Internet of Things). In addition to the peripheral devices in 1., it is equipped with DRAM, SD card, Ethernet, and GPIO.
+3. For personal computers (Frying Lance)
+Based on the 64-bit version of Rocket Chip, in addition to 2 peripherals, a VGA adapter, keyboard and mouse, and USB will be added. Here, we will create a RISC-V version of [Haribote OS] (http://hrb.osask.jp/) called "Kakiwari OS". (If possible, I want to run Linux as well)
+4. For high performance computers (ThunderLance)
+It is a multi-core version of 3. (If possible, I would like to connect multiple boards to implement a NUMA architecture ...)
 
-現在のところ、「1. RISC-Vの学習用(TinyLance)」は完成し、『[12ステップで作る組込みOS自作入門](https://www.amazon.co.jp/dp/4877832394)』の8th ステップまでを移植しています。続きの12thステップに関しては、『[Lance Rocketのソフトウェア開発キット](https://github.com/horie-t/lance-rocket-sdk)』で移植しています。
+At present, "1. RISC-V for learning (TinyLance)" has been completed, and "[Introduction to self-made embedded OS made in 12 steps] (https://www.amazon.co.jp/dp/4877832394)" I have ported up to the 8th step of. The following 12th step is ported in "[Lance Rocket Software Development Kit] (https://github.com/horie-t/lance-rocket-sdk)".
 
-ビルド方法などは、[こちら](https://github.com/horie-t/freedom)を参照してください。
-
+Please refer to [here] (https://github.com/horie-t/freedom) for the build method.
