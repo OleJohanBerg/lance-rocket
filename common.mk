@@ -2,12 +2,12 @@
 # See LICENSE.HORIE_Tetsuya for license details.
 
 # Required variables:
-# - MODEL : トップモジュールのクラス
-# - PROJECT : トップモジュールのパッケージ
-# - CONFIG_PROJECT : Configクラスのパッケージ
-# - CONFIG : Configクラス名
-# - BUILD_DIR : ビルド時のディレクトリ
-# - FPGA_DIR : Vivado関連ディレクトリ
+# - MODEL : Top module class
+# - PROJECT : Top module package
+# - CONFIG_PROJECT : Config Class package
+# - CONFIG : Configname of the class
+# - BUILD_DIR : Build directory
+# - FPGA_DIR : Vivado related directories
 
 # Optional variables:
 # - EXTRA_FPGA_VSRCS
